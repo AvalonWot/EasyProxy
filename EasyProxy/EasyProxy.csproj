@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.1</Version>
+    <Authors>AvalonWot</Authors>
+    <Description>HTTP Proxy Client</Description>
+    <PackageTags>Proxy</PackageTags>
+  </PropertyGroup>
+
+</Project>
