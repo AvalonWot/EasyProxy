@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyProxy", "EasyProxy\EasyProxy.csproj", "{08AF1EFB-5F39-4BF5-AFBF-22C05C13755A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyProxy", "EasyProxy\EasyProxy.csproj", "{08AF1EFB-5F39-4BF5-AFBF-22C05C13755A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{8E8C52F6-E822-4D69-8647-1BAE427AC92C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{08AF1EFB-5F39-4BF5-AFBF-22C05C13755A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08AF1EFB-5F39-4BF5-AFBF-22C05C13755A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08AF1EFB-5F39-4BF5-AFBF-22C05C13755A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8C52F6-E822-4D69-8647-1BAE427AC92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8C52F6-E822-4D69-8647-1BAE427AC92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8C52F6-E822-4D69-8647-1BAE427AC92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8C52F6-E822-4D69-8647-1BAE427AC92C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

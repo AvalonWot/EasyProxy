@@ -6,6 +6,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Buffers.Text;
 
 namespace EasyProxy
 {
@@ -13,7 +15,20 @@ namespace EasyProxy
     {
         public string Host { get; private set; }
         public int Port { get; private set; }
-        ICredentials IWebProxy.Credentials { get; set; }
+        ICredentials IWebProxy.Credentials
+        {
+            get
+            {
+                string user = "Fake";
+                var raw = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(Headers));
+                string pwd = Convert.ToBase64String(raw, Base64FormattingOptions.None);
+                return new NetworkCredential(user, pwd);
+            }
+            set
+            {
+
+            }
+        }
 
         public Dictionary<string, string> Headers { get; } = new Dictionary<string, string>();
 
