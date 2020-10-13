@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Buffers.Text;
+using System.Text.RegularExpressions;
 
 namespace EasyProxy
 {
@@ -48,6 +49,7 @@ namespace EasyProxy
             return false;
         }
 
+        static readonly Regex rx = new Regex(@"^HTTP/1\.[012] 200", RegexOptions.Compiled);
         public async Task<TcpClient> CreateConnect(string targetHost, int targetPort, CancellationToken cancellationToken)
         {
             var tcp = new TcpClient();
@@ -57,14 +59,14 @@ namespace EasyProxy
                 NetworkStream ns = tcp.GetStream();
                 StringBuilder sb = new StringBuilder($"CONNECT {targetHost}:{targetPort} HTTP/1.0\r\n");
                 foreach (var item in Headers)
-                    sb.AppendFormat("{}: {}\r\n", item.Key, item.Value);
+                    sb.AppendFormat("{0}: {1}\r\n", item.Key, item.Value);
                 sb.Append("\r\n");
                 var handshake = Encoding.ASCII.GetBytes(sb.ToString());
                 await ns.WriteAsync(handshake, 0, handshake.Length, cancellationToken);
                 using (var sr = new StreamReader(ns, Encoding.ASCII, false, 256, true))
                 {
                     string line = await sr.ReadLineAsync().ConfigureAwait(false);
-                    if (!line.StartsWith("HTTP/1.0 200"))
+                    if (!rx.IsMatch(line))
                         throw new ProxyException($"代理服务器返回错误: {line}");
                     while (!string.IsNullOrEmpty(line))
                     {
